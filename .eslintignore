@@ -1,0 +1,8 @@
+allure-report
+allure-result
+.git
+.vscode
+jUnitResults
+results
+configs
+conf.js
