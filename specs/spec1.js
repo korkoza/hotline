@@ -1,5 +1,4 @@
 let LoginPage = require('../pages/LoginPage');
-let MyAccountPage = require('../pages/MyAccountPage');
 let MainPage = require('../pages/MainPage');
 
 describe('Login page', () => {
@@ -20,9 +19,9 @@ describe('Login page', () => {
             await LoginPage.setPasswd('passw0rd');
         })();
 
-        await allure.createStep('3. Click Create an account', async () => {
+        await allure.createStep('Click Create an account', async () => {
             await LoginPage.submit();
-            await expect(MyAccountPage.getUserName()).toEqual('protractor01');
+            await expect(MainPage.getUserName()).toEqual('protractor01');
         })();
     });
 });

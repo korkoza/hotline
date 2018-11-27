@@ -11,11 +11,11 @@ exports.config = {
     SELENIUM_PROMISE_MANAGER: 0,
     framework: 'jasmine2',
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['./specs/spec1.js'],
+    specs: ['./specs/spec*.js'],
     capabilities: {
         shardTestFiles: true,
         browserName: 'chrome',
-        maxInstances: 2,
+        maxInstances: 1,
         chromeOptions: {
             args: ["--window-size=1280,780"]
         }

@@ -5,6 +5,14 @@ class MainPage extends BasePage {
     getSignInElement() {
         return new ButtonElement(element(by.css('.item-login a')), "Sign in button");
     }
+
+    getUserNameElement() {
+        return element(by.css('.name.ellipsis'));
+    }
+
+    async getUserName() {
+        return await this.getUserNameElement().getText();
+    }
 }
 
 
