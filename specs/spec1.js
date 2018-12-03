@@ -10,18 +10,14 @@ describe('Login page', () => {
     });
 
     it('successful login', async () => {
-        await allure.createStep('Click Sign in', async () => {
-            await MainPage.getSignInElement().click();
-        })();
+        // step 1
+        await MainPage.navigateToSignIn();
 
-        await allure.createStep('Fill out Email and password', async () => {
-            await LoginPage.setEmail('protractor.automation01@gmail.com');
-            await LoginPage.setPasswd('passw0rd');
-        })();
+        // step 2
+        await LoginPage.setCred('protractor.automation01@gmail.com', 'passw0rd');
 
-        await allure.createStep('Click Create an account', async () => {
-            await LoginPage.submit();
-            await expect(MainPage.getUserName()).toEqual('protractor01');
-        })();
+        // step 3
+        await LoginPage.naviagateToLogin();
+        await expect(MainPage.getUserName()).toEqual('protractor01');
     });
 });

@@ -1,9 +1,7 @@
 /* eslint-disable max-len */
 let RegisterPage = require('../pages/RegisterPage');
 let MainPage = require('../pages/MainPage');
-
-let EC = protractor.ExpectedConditions; // ???
-
+let LoginPage = require('../pages/LoginPage');
 
 describe('Login page', () => {
     beforeAll(async () => {
@@ -14,43 +12,28 @@ describe('Login page', () => {
     });
 
     it('create account negative', async () => {
-        await allure.createStep('Click Sign in', async () => {
-            await MainPage.getSignInElement().click();
-        })();
+        // step 1
+        await MainPage.navigateToSignIn();
 
-        await allure.createStep('Click Sign Up', async () => {
-            await RegisterPage.getSignUpElement().click();
-        })();
+        // step 2
+        await LoginPage.navigateToSignUp();
 
-        await allure.createStep('Verify all empty fields', async () => {
-            await RegisterPage.getSubmitReg().click();
-            expect(await RegisterPage.getEmailErrorElement().getText()).toEqual('Заполните это поле');
-        })();
+        // step 3
+        await RegisterPage.setCredCreate('', '', '', 'Verify all empty fields');
+        expect(await RegisterPage.getEmailErrorElement().getText()).toEqual('Заполните это поле');
 
-        await allure.createStep('Set incorrect Email, and submit creation', async () => {
-            await RegisterPage.setEmailReg('abc@abccom');
-            await RegisterPage.getSubmitReg().click();
-            expect(await RegisterPage.getEmailErrorElement().getText()).toEqual('Поле не соответствует формату');
-        })();
+        // step 4
+        await RegisterPage.setCredCreate('asfaf', '', '', 'Use incorrect Email');
+        expect(await RegisterPage.getEmailErrorElement().getText()).toEqual('Поле не соответствует формату');
 
-        await allure.createStep('Set already used email and submit ', async () => {
-            await RegisterPage.getEmailRegElement().clear();
-            await RegisterPage.setEmailReg('protractor.automation01@gmail.com');
-            await RegisterPage.getSubmitReg().click();
+        // step 5
+        await RegisterPage.getEmailRegElement().clear();
+        await RegisterPage.setCredCreate('protractor.automation01@gmail.com', '', '', 'Set already used email and submit');
+        expect(await RegisterPage.getEmailErrorElement().getText()).toEqual('Извините, но такой e-mail уже занят');
 
-            // await browser.wait(EC.textToBePresentInElement(RegisterPage.getEmailErrorElement().protractorElement, 'Извините'), 5000);
-
-            expect(await RegisterPage.getEmailErrorElement().getText()).toEqual('Извините, но такой e-mail уже занят');
-        })();
-
-        await allure.createStep('Use weak password', async () => {
-            await RegisterPage.getEmailRegElement().clear();
-            await RegisterPage.setEmailReg('protractor.automation02@gmail.com');
-            await RegisterPage.setNickReg('protractor.automation02');
-            await RegisterPage.setPasswordReg('1');
-            await RegisterPage.getSubmitReg().click();
-            // await RegisterPage.getErrorChanged();
-            expect(await RegisterPage.getPasswordErrorElement().getText()).toEqual('Длина поля не может быть меньше 4 и больше 16 символов');
-        })();
+        // step 6
+        await RegisterPage.getEmailRegElement().clear();
+        await RegisterPage.setCredCreate('protractor.automation02@gmail.com', 'protractor.automation02', '1', 'Use weak password');
+        expect(await RegisterPage.getPasswordErrorElement().getText()).toEqual('Длина поля не может быть меньше 4 и больше 16 символов');
     });
 });

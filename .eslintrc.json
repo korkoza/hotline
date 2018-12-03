@@ -20,7 +20,8 @@
         "consoleLogger": false,
         "allure": false,
         "allureWrapper": false,
-        "window": false
+        "window": false,
+        "protractor": false
     },
       "rules": {
         "linebreak-style": "off",

@@ -11,7 +11,7 @@ exports.config = {
     SELENIUM_PROMISE_MANAGER: 0,
     framework: 'jasmine2',
     seleniumAddress: 'http://localhost:4444/wd/hub',
-    specs: ['./specs/spec*.js'],
+    specs: ['./specs/spec2.js'],
     capabilities: {
         shardTestFiles: true,
         browserName: 'chrome',
@@ -30,5 +30,9 @@ exports.config = {
         jasmine.getEnv().afterEach(async () => {
             await createScreenShotAllure();         
         });        
-    }
+    },
+    jasmineNodeOpts: {
+        defaultTimeoutInterval: 60000,
+        stopSpecOnExpectationFailure: true
+        }
 }

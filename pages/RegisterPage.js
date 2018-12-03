@@ -6,6 +6,10 @@ let TextViewElement = require("../elements/text_view");
 let BaseElement = require("../elements/BaseElement");
 
 class RegisterPage extends BasePage {
+    waitForPageAvailable() {
+        return new BaseElement(element(by.css(".header-short img")), "Check whether page is available");
+    }
+
     getEmailRegElement() {
         return new InputElement(element(by.css(".field[type='email']")), "Email input register");
     }
@@ -34,10 +38,6 @@ class RegisterPage extends BasePage {
         return new ButtonElement(element(by.id("submit-button")), "Create Submit registration button");
     }
 
-    getSignUpElement() {
-        return new BaseElement(element(by.css(".viewbox .text p a")), "Create SignUp eleement");
-    }
-
     async setEmailReg(key) {
         await this.getEmailRegElement().sendKeys(key);
     }
@@ -48,6 +48,15 @@ class RegisterPage extends BasePage {
 
     async setPasswordReg(key) {
         await this.getPasswordRegElement().sendKeys(key);
+    }
+
+    async setCredCreate(email, nick, pass, stepName) {
+        await allure.createStep(stepName, async () => {
+            await this.setEmailReg(email);
+            await this.setNickReg(nick);
+            await this.setPasswordReg(pass);
+            await this.getSubmitReg().click();
+        })();
     }
 }
 
