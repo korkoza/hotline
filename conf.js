@@ -20,19 +20,23 @@ exports.config = {
             args: ["--window-size=1280,780"]
         }
     },
-    onPrepare: async function() {
-        let AllureReporter = require('jasmine-allure-reporter');
-
-        jasmine.getEnv().addReporter(new AllureReporter({
-            resultDir: 'allure-results'
-        }));
-        
-        jasmine.getEnv().afterEach(async () => {
-            await createScreenShotAllure();         
-        });        
+    params: {
+        explicitWait: 9500,
+        implicitWait: 5000
     },
     jasmineNodeOpts: {
         defaultTimeoutInterval: 60000,
         stopSpecOnExpectationFailure: true
-        }
+        },
+    onPrepare: async function() {
+        let AllureReporter = require('jasmine-allure-reporter');
+    
+        jasmine.getEnv().addReporter(new AllureReporter({
+            resultDir: 'allure-results'
+        }));
+            
+        jasmine.getEnv().afterEach(async () => {
+            await createScreenShotAllure();         
+        });        
+    }
 }

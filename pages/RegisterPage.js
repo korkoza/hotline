@@ -50,7 +50,7 @@ class RegisterPage extends BasePage {
         await this.getPasswordRegElement().sendKeys(key);
     }
 
-    async setCredCreate(email, nick, pass, stepName) {
+    async fillCreateAccount(email, nick, pass, stepName) {
         await allure.createStep(stepName, async () => {
             await this.setEmailReg(email);
             await this.setNickReg(nick);
