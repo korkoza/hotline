@@ -3,8 +3,12 @@ let ButtonElement = require("../elements/button");
 let BaseElement = require("../elements/BaseElement");
 
 class MainPage extends BasePage {
-    waitForPageAvailable() {
-        return new BaseElement(element(by.css(".header img")), "Check whether page is available");
+    async waitForPageAvailable() {
+        await this.getPageBaseElement().waitForVisible();
+    }
+
+    getPageBaseElement() {
+        return new BaseElement(element(by.css(".header img")), "Main banner");
     }
 
     getSignInElement() {

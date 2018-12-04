@@ -4,7 +4,7 @@ let MainPage = require('../pages/MainPage');
 describe('Login page', () => {
     beforeAll(async () => {
         await browser.restart();
-        await browser.manage().setTimeouts({ implicit: 5000 });
+        await browser.manage().setTimeouts({ implicit: browser.params.implicitWait });
         browser.waitForAngularEnabled(false);
         await browser.get('https://hotline.ua/');
     });
