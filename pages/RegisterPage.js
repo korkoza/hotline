@@ -1,25 +1,29 @@
 /* eslint-disable max-len */
-let BasePage = require("./BasePage");
+let BasePage = require("./basePage");
 let ButtonElement = require("../elements/button");
 let InputElement = require("../elements/input");
 let TextViewElement = require("../elements/text_view");
-let BaseElement = require("../elements/BaseElement");
+let BaseElement = require("../elements/baseElement");
 
 class RegisterPage extends BasePage {
-    waitForPageAvailable() {
-        return new BaseElement(element(by.css(".header-short img")), "Check whether page is available");
+    async waitForPageAvailable() {
+        await this.getPageBaseElement().waitForVisible();
     }
 
-    getEmailRegElement() {
+    getPageBaseElement() {
+        return new BaseElement(element(by.css(".header-short img")), "Logo");
+    }
+
+    getEmailElement() {
         return new InputElement(element(by.css(".field[type='email']")), "Email input register");
     }
 
-    getNickRegElement() {
+    getNickElement() {
         return new InputElement(element(by.css(".field[type='text']")), "Nick name input register");
     }
 
-    getPasswordRegElement() {
-        return new InputElement(element(by.css(".field[type='password']")), "Password input register");
+    getPasswordElement() {
+        return new InputElement(element(by.css(".field[name='password']")), "Password input register");
     }
 
     getEmailErrorElement() {
@@ -34,30 +38,35 @@ class RegisterPage extends BasePage {
         return new TextViewElement(element(by.css(".field.error[type='password'] + div div")), "Password Error");
     }
 
-    getSubmitReg() {
-        return new ButtonElement(element(by.id("submit-button")), "Create Submit registration button");
+    getSubmit() {
+        return new ButtonElement(element(by.id("submit-button")), "Submit registration button");
     }
 
-    async setEmailReg(key) {
-        await this.getEmailRegElement().sendKeys(key);
+    getVerificationElement() {
+        return new TextViewElement(element(by.css(".text.cell-8")), "Verification element");
     }
 
-    async setNickReg(key) {
-        await this.getNickRegElement().sendKeys(key);
+    async setEmail(key) {
+        await this.getEmailElement().sendKeys(key);
     }
 
-    async setPasswordReg(key) {
-        await this.getPasswordRegElement().sendKeys(key);
+    async setNick(key) {
+        await this.getNickElement().sendKeys(key);
     }
 
-    async fillCreateAccount(email, nick, pass, stepName) {
+    async setPassword(key) {
+        await this.getPasswordElement().sendKeys(key);
+    }
+
+    async createAccount(email, nick, pass, stepName) {
         await allure.createStep(stepName, async () => {
-            await this.setEmailReg(email);
-            await this.setNickReg(nick);
-            await this.setPasswordReg(pass);
-            await this.getSubmitReg().click();
+            await this.setEmail(email);
+            await this.setNick(nick);
+            await this.setPassword(pass);
+            await this.getSubmit().click();
         })();
     }
 }
+
 
 module.exports = new RegisterPage();

@@ -1,4 +1,4 @@
-let BaseElement = require("./BaseElement");
+let BaseElement = require("./baseElement");
 
 
 class ButtonElement extends BaseElement {}

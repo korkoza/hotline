@@ -1,6 +1,6 @@
-let BasePage = require("./BasePage");
+let BasePage = require("./basePage");
 let ButtonElement = require("../elements/button");
-let BaseElement = require("../elements/BaseElement");
+let BaseElement = require("../elements/baseElement");
 
 class MainPage extends BasePage {
     async waitForPageAvailable() {
@@ -8,7 +8,7 @@ class MainPage extends BasePage {
     }
 
     getPageBaseElement() {
-        return new BaseElement(element(by.css(".header img")), "Main banner");
+        return new BaseElement(element(by.css(".text-center")), "Main banner");
     }
 
     getSignInElement() {

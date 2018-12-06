@@ -1,11 +1,15 @@
-let BasePage = require("./BasePage");
+let BasePage = require("./basePage");
 let ButtonElement = require("../elements/button");
 let InputElement = require("../elements/input");
-let BaseElement = require("../elements/BaseElement");
+let BaseElement = require("../elements/baseElement");
 
 class LoginPage extends BasePage {
-    waitForPageAvailable() {
-        return new BaseElement(element(by.css(".header-short img")), "Check whether page is available");
+    async waitForPageAvailable() {
+        await this.getPageBaseElement().waitForVisible();
+    }
+
+    getPageBaseElement() {
+        return new BaseElement(element(by.css(".header-short img")), "Logo");
     }
 
     getEmailElement() {

@@ -29,6 +29,9 @@ exports.config = {
         stopSpecOnExpectationFailure: true
         },
     onPrepare: async function() {
+        await browser.restart();
+        browser.waitForAngularEnabled(false);
+               
         let AllureReporter = require('jasmine-allure-reporter');
     
         jasmine.getEnv().addReporter(new AllureReporter({
