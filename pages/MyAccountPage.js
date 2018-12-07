@@ -1,4 +1,4 @@
-let BasePage = require("./BasePage");
+let BasePage = require("./basePage");
 
 
 class MyAccountPage extends BasePage {

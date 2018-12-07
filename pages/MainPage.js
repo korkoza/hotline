@@ -28,6 +28,10 @@ class MainPage extends BasePage {
             await this.getSignInElement().click();
         })();
     }
+
+    async open() {
+        await browser.get('https://hotline.ua/');
+    }
 }
 
 

@@ -4,10 +4,12 @@ let MainPage = require('../pages/mainPage');
 describe('Login page', () => {
     beforeAll(async () => {
         await browser.manage().setTimeouts({ implicit: browser.params.implicitWait });
-        await browser.get('https://hotline.ua/');
+        await MainPage.open();
     });
 
     it('successful login', async () => {
+        await MainPage.waitForPageAvailable();
+
         // step 1
         await MainPage.navigateToSignIn();
 

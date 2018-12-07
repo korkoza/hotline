@@ -38,7 +38,7 @@ class RegisterPage extends BasePage {
         return new TextViewElement(element(by.css(".field.error[type='password'] + div div")), "Password Error");
     }
 
-    getSubmit() {
+    getSubmitBtnElement() {
         return new ButtonElement(element(by.id("submit-button")), "Submit registration button");
     }
 
@@ -63,7 +63,7 @@ class RegisterPage extends BasePage {
             await this.setEmail(email);
             await this.setNick(nick);
             await this.setPassword(pass);
-            await this.getSubmit().click();
+            await this.getSubmitBtnElement().click();
         })();
     }
 }
