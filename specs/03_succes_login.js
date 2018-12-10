@@ -1,15 +1,15 @@
-let LoginPage = require('../pages/LoginPage');
-let MainPage = require('../pages/MainPage');
+let LoginPage = require('../pages/loginPage');
+let MainPage = require('../pages/mainPage');
 
 describe('Login page', () => {
     beforeAll(async () => {
-        await browser.restart();
         await browser.manage().setTimeouts({ implicit: browser.params.implicitWait });
-        browser.waitForAngularEnabled(false);
-        await browser.get('https://hotline.ua/');
+        await MainPage.open();
     });
 
     it('successful login', async () => {
+        await MainPage.waitForPageAvailable();
+
         // step 1
         await MainPage.navigateToSignIn();
 
