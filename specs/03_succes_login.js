@@ -3,7 +3,6 @@ let MainPage = require('../pages/mainPage');
 
 describe('Login page', () => {
     beforeAll(async () => {
-        await browser.manage().setTimeouts({ implicit: browser.params.implicitWait });
         await MainPage.open();
     });
 
@@ -14,7 +13,7 @@ describe('Login page', () => {
         await MainPage.navigateToSignIn();
 
         // step 2
-        await LoginPage.setCred('protractor.automation01@gmail.com', 'passw0rd');
+        await LoginPage.setCred('protractor.automation01@gmail.com', 'passw0rd', 'Correct email, correct password');
 
         // step 3
         await LoginPage.naviagateToLogin();

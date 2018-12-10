@@ -2,6 +2,7 @@ let BasePage = require("./basePage");
 let ButtonElement = require("../elements/button");
 let InputElement = require("../elements/input");
 let BaseElement = require("../elements/baseElement");
+let TextViewElement = require("../elements/text_view");
 
 class LoginPage extends BasePage {
     async waitForPageAvailable() {
@@ -25,7 +26,19 @@ class LoginPage extends BasePage {
     }
 
     getSignUpElement() {
-        return new BaseElement(element(by.css(".viewbox .text p a")), "Create SignUp eleement");
+        return new BaseElement(element(by.css(".viewbox .text p a")), "Create SignUp element");
+    }
+
+    getEmptyEmailErrorElement() {
+        return new TextViewElement(element(by.css(".errors")), "Create Empty Email Error element");
+    }
+
+    getInvalidEmailErrorElement() {
+        return new TextViewElement(element(by.css(".item-error")), "Create Invalid Email Error element");
+    }
+
+    getPassErrorElement() {
+        return new TextViewElement(element(by.css(".errors")), "Create Password Error element");
     }
 
     async setEmail(a) {
@@ -44,8 +57,9 @@ class LoginPage extends BasePage {
         await this.getEmailCreateElement().sendKeys(a);
     }
 
-    async setCred(email, pass) {
-        await allure.createStep('Fill out Email and password', async () => {
+    async setCred(email, pass, step) {
+        await allure.createStep(step, async () => {
+            await this.clearFields();
             await this.setEmail(email);
             await this.setPasswd(pass);
         })();
@@ -61,6 +75,11 @@ class LoginPage extends BasePage {
         await allure.createStep('Click Sign Up', async () => {
             await this.getSignUpElement().click();
         })();
+    }
+
+    async clearFields() {
+        await this.getEmailElement().clear();
+        await this.getPassElement().clear();
     }
 }
 
