@@ -5,7 +5,6 @@ let LoginPage = require('../pages/loginPage');
 
 describe('Login page', () => {
     beforeAll(async () => {
-        await browser.manage().setTimeouts({ implicit: browser.params.implicitWait });
         await MainPage.open();
     });
 
