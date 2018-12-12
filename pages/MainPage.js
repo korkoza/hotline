@@ -1,6 +1,8 @@
 let BasePage = require("./basePage");
 let ButtonElement = require("../elements/button");
 let BaseElement = require("../elements/baseElement");
+let InputElement = require("../elements/input");
+let TextViewElement = require("../elements/text_view");
 
 class MainPage extends BasePage {
     async waitForPageAvailable() {
@@ -16,7 +18,15 @@ class MainPage extends BasePage {
     }
 
     getUserNameElement() {
-        return element(by.css('.name.ellipsis'));
+        return new TextViewElement(element(by.css('.name.ellipsis')), "User name");
+    }
+
+    getSearchElement() {
+        return new InputElement(element(by.id("searchbox")), "Search element");
+    }
+
+    getDoSearchElement() {
+        return new ButtonElement(element(by.id("doSearch")), "Do search button");
     }
 
     async getUserName() {
@@ -31,6 +41,13 @@ class MainPage extends BasePage {
 
     async open() {
         await browser.get('https://hotline.ua/');
+    }
+
+    async search(a) {
+        await allure.createStep(`Search ${a}`, async () => {
+            await this.getSearchElement().sendKeys(a);
+            await this.getDoSearchElement().click();
+        })();
     }
 }
 
