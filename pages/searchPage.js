@@ -17,7 +17,7 @@ class SearchPage extends BasePage {
 
     getFirstItem() {
         return new TextViewElement(element(by
-            .css(".products-list.cell-list>li:nth-child(1)>div:nth-child(3)>p")), "First search item");
+            .css("li:nth-child(1)>div.item-info>p")), "First search item");
     }
 }
 
