@@ -18,6 +18,14 @@ class BaseElement {
     async waitForVisible() {
         await browser.wait(EC.visibilityOf(this.getProtractorElement()), browser.params.explicitWait);
     }
+
+    async elementToBeSelected() {
+        await browser.wait(EC.elementToBeSelected(this.getProtractorElement()), browser.params.explicitWait);
+    }
+
+    async hover() {
+        await browser.actions().mouseMove(this.getProtractorElement()).perform();
+    }
 }
 
 module.exports = BaseElement;

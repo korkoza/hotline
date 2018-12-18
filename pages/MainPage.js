@@ -49,6 +49,29 @@ class MainPage extends BasePage {
             await this.getDoSearchElement().click();
         })();
     }
+
+    getTreeElement() {
+        return new BaseElement(element(by.css('a[href="/dacha_sad/"]')), 'Category element');
+    }
+
+    getSubTreeElement() {
+        return new BaseElement(element(by
+            .css('li[data-menu-id="2952"]')), 'SubCategory1 element');
+    }
+
+    getCategoryElement() {
+        return new BaseElement(element(by
+            .css('a[href*="/dacha_sad/nasosy-vodosnabzheniya/46036/"]')), 'SubCategory2 element');
+    }
+
+    async navigateCategory() {
+        await allure.createStep("Navigate to category", async () => {
+            await this.getTreeElement().hover();
+            await this.getSubTreeElement().waitForVisible();
+            await this.getSubTreeElement().click();
+            await this.getCategoryElement().click();
+        })();
+    }
 }
 
 
