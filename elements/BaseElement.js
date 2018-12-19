@@ -29,6 +29,7 @@ class BaseElement {
     }
 
     async hover() {
+        console.log(`Hover on "${this.name}"`);
         await browser.actions().mouseMove(this.getProtractorElement()).perform();
     }
 }

@@ -21,7 +21,7 @@ class CategoryPage extends BasePage {
         return new BaseElement(element(by.css("label[for=checkout-checkbox-mobile]")), "Checkbox Buy on Hotline");
     }
 
-    async clickBuyOnHotlineCheckBox() {
+    async clickBuyOnHotlineChkBox() {
         await allure.createStep("Click checkbox buy on Hotline", async () => {
             await this.getBuyOnHotlineChkBox().click();
         })();

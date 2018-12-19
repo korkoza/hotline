@@ -52,17 +52,17 @@ class MainPage extends BasePage {
     }
 
     getTreeElement() {
-        return new BaseElement(element(by.css('a[href="/dacha_sad/"]')), 'Category element');
+        return new BaseElement(element(by.css('a[href="/dacha_sad/"]')), 'Tree element');
     }
 
     getSubTreeElement() {
         return new BaseElement(element(by
-            .css('li[data-menu-id="2952"]')), 'SubCategory1 element');
+            .css('li[data-menu-id="2952"]')), 'Subtree element');
     }
 
     getCategoryElement() {
         return new BaseElement(element(by
-            .css('a[href*="/dacha_sad/nasosy-vodosnabzheniya/46036/"]')), 'SubCategory2 element');
+            .css('a[href*="/dacha_sad/nasosy-vodosnabzheniya/46036/"]')), 'Category element');
     }
 
     async navigateCategory() {
@@ -74,6 +74,5 @@ class MainPage extends BasePage {
         })();
     }
 }
-
 
 module.exports = new MainPage();
