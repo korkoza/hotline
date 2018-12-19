@@ -5,23 +5,25 @@ let CategoryPage = require('../pages/categoryPage');
 let CartPage = require('../pages/cartPage');
 let LoginPage = require('..//pages/loginPage');
 
-describe('Search', () => {
+describe('Add to cart', () => {
     beforeAll(async () => {
         await MainPage.open();
+    });
+
+    it('Add to cart', async () => {
         await MainPage.navigateToSignIn();
         await LoginPage.setCred('protractor.automation01@gmail.com', 'passw0rd', 'Correct email, correct password');
         await LoginPage.naviagateToLogin();
-    });
-
-    it('Search', async () => {
-        // await MainPage.waitForPageAvailable();
 
         // step 1
+        await MainPage.waitForPageAvailable();
         await MainPage.navigateCategory();
         expect(await CategoryPage.getCategoryNameElement().getText()).toEqual("Насос для фонтанов и прудов");
 
         // step 2
-        await CategoryPage.clickBuyOnHotlineCheckBox();
+        await CategoryPage.getBuyOnHotlineChkBox().click();
+        expect(await CategoryPage.getVerifyChkboxElement().getAttribute("checked")).toBeTruthy();
+
 
         // step 3
         await CategoryPage.clickCartIcon();
@@ -41,6 +43,6 @@ describe('Search', () => {
 
         // step 7
         await CartPage.clickOrderButton();
-        await browser.sleep(3000);
+        expect(await browser.getTitle()).toEqual("Hotline Checkout");
     });
 });

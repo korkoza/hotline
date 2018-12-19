@@ -15,6 +15,11 @@ class BaseElement {
         await this.protractorElement.click();
     }
 
+    async getAttribute(attribute) {
+        console.log(`Get attribute "${attribute}" of "${this.name}"`);
+        return await this.protractorElement.getAttribute(attribute);
+    }
+
     async waitForVisible() {
         await browser.wait(EC.visibilityOf(this.getProtractorElement()), browser.params.explicitWait);
     }

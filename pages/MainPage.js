@@ -10,7 +10,8 @@ class MainPage extends BasePage {
     }
 
     getPageBaseElement() {
-        return new BaseElement(element(by.css(".text-center")), "Main banner");
+        return new BaseElement(element(by
+            .css(".thumbnails.owl-loaded.owl-drag > div.owl-stage-outer > div")), "Main banner");
     }
 
     getSignInElement() {

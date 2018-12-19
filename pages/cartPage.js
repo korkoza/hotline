@@ -1,6 +1,5 @@
-let BasePage = require("./basePage");
+let BasePage = require("../pages/basePage");
 let BaseElement = require("../elements/baseElement");
-let ButtonElement = require('../elements/button');
 
 class CartPage extends BasePage {
     async waitForPageAvailable() {
@@ -8,7 +7,7 @@ class CartPage extends BasePage {
     }
 
     getPageBaseElement() {
-        return new BaseElement(element(by.css("div.viewbox:nth-child(2)")), "Product's list");
+        return new BaseElement(element(by.css("div:nth-child(3) > div.viewbox.viewbox-striped")), "Product's list");
     }
 
     // Delivery type dropdown elements

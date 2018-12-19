@@ -15,15 +15,24 @@ class CategoryPage extends BasePage {
         return new TextViewElement(element(by.css(".cell-12 .heading")), "Name of category");
     }
 
-    getBuyOnHotlineCheckBox() {
+    // Buy on Hotline Checkbox
+
+    getBuyOnHotlineChkBox() {
         return new BaseElement(element(by.css("label[for=checkout-checkbox-mobile]")), "Checkbox Buy on Hotline");
     }
 
     async clickBuyOnHotlineCheckBox() {
         await allure.createStep("Click checkbox buy on Hotline", async () => {
-            await this.getBuyOnHotlineCheckBox().click();
+            await this.getBuyOnHotlineChkBox().click();
         })();
     }
+
+    getVerifyChkboxElement() {
+        return new BaseElement(element(by.css("input#checkout-checkbox-mobile")), "Verify checkbox selection element");
+    }
+
+
+    // Cart Icon
 
     getCartIcon() {
         return new BaseElement(element(by.css(".product-item:nth-child(3) .tooltip>a")), "Cart icon");
