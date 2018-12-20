@@ -7,7 +7,7 @@ class CartPage extends BasePage {
     }
 
     getPageBaseElement() {
-        return new BaseElement(element(by.css("div:nth-child(3) > div.viewbox.viewbox-striped")), "Product's list");
+        return new BaseElement(element(by.css(".cart-info.text")), "Product's list");
     }
 
     // Delivery type dropdown elements
@@ -17,7 +17,7 @@ class CartPage extends BasePage {
     }
 
     getDeliveryTypeOption() {
-        return new BaseElement(element(by.css("option[data-delivery-id='42414']")), "Delivery type #1");
+        return new BaseElement(element(by.css("option[data-delivery-id='13261']")), "Delivery type #1");
     }
 
     async setDeliveryType() {

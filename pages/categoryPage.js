@@ -1,6 +1,7 @@
 let BasePage = require("./basePage");
 let BaseElement = require("../elements/baseElement");
 let TextViewElement = require("../elements/text_view");
+let CheckboxElement = require("../elements/checkboxElement");
 
 class CategoryPage extends BasePage {
     async waitForPageAvailable() {
@@ -18,19 +19,8 @@ class CategoryPage extends BasePage {
     // Buy on Hotline Checkbox
 
     getBuyOnHotlineChkBox() {
-        return new BaseElement(element(by.css("label[for=checkout-checkbox-mobile]")), "Checkbox Buy on Hotline");
+        return new CheckboxElement(element(by.css("label[for=checkout-checkbox-mobile]")), "Checkbox Buy on Hotline");
     }
-
-    async clickBuyOnHotlineChkBox() {
-        await allure.createStep("Click checkbox buy on Hotline", async () => {
-            await this.getBuyOnHotlineChkBox().click();
-        })();
-    }
-
-    getVerifyChkboxElement() {
-        return new BaseElement(element(by.css("input#checkout-checkbox-mobile")), "Verify checkbox selection element");
-    }
-
 
     // Cart Icon
 
