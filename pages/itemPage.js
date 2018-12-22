@@ -9,7 +9,7 @@ class ItemPage extends BasePage {
     }
 
     getPageBaseElement() {
-        return new BaseElement(element(by.css(".viewbox.product-resume")), "Item info");
+        return new BaseElement(element(by.css(".btn-blue.m_b-sm")), "Item info");
     }
 
     getItemName() {

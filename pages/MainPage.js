@@ -11,7 +11,7 @@ class MainPage extends BasePage {
 
     getPageBaseElement() {
         return new BaseElement(element(by
-            .css(".thumbnails.owl-loaded.owl-drag > div.owl-stage-outer > div")), "Main banner");
+            .css(".thumbnails > .owl-stage-outer")), "Main banner");
     }
 
     getSignInElement() {
@@ -51,26 +51,26 @@ class MainPage extends BasePage {
         })();
     }
 
-    getTreeElement() {
+    getDachaSadTreeElement() {
         return new BaseElement(element(by.css('a[href="/dacha_sad/"]')), 'Tree element');
     }
 
-    getSubTreeElement() {
+    getBaseinSubTreeElement() {
         return new BaseElement(element(by
             .css('li[data-menu-id="2952"]')), 'Subtree element');
     }
 
-    getCategoryElement() {
+    getNasosCategoryElement() {
         return new BaseElement(element(by
             .css('a[href*="/dacha_sad/nasosy-vodosnabzheniya/46036/"]')), 'Category element');
     }
 
-    async navigateCategory() {
+    async navigateNasosCategory() {
         await allure.createStep("Navigate to category", async () => {
-            await this.getTreeElement().hover();
-            await this.getSubTreeElement().waitForVisible();
-            await this.getSubTreeElement().click();
-            await this.getCategoryElement().click();
+            await this.getDachaSadTreeElement().hover();
+            await this.getBaseinSubTreeElement().waitForVisible();
+            await this.getBaseinSubTreeElement().click();
+            await this.getNasosCategoryElement().click();
         })();
     }
 }

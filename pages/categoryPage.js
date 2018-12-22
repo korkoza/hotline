@@ -24,13 +24,13 @@ class CategoryPage extends BasePage {
 
     // Cart Icon
 
-    getCartIcon() {
-        return new BaseElement(element(by.css(".product-item:nth-child(3) .tooltip>a")), "Cart icon");
+    getCartIcon(number) {
+        return new BaseElement(element(by.css(`.product-item:nth-child(${number}) .tooltip>a`)), "Cart icon");
     }
 
-    async clickCartIcon() {
+    async clickCartIcon(number) {
         await allure.createStep("Click on product's Cart icon", async () => {
-            await this.getCartIcon().click();
+            await this.getCartIcon(number).click();
         })();
     }
 }

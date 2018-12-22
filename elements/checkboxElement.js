@@ -1,6 +1,3 @@
-/* it's unfinished class. I didn't manged how to check whether checkbox is selected because different
-elements have to be used for selection and verification. */
-
 let BaseElement = require("./baseElement");
 let InputElement = require("./input");
 

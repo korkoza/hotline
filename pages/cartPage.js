@@ -1,5 +1,6 @@
 let BasePage = require("../pages/basePage");
 let BaseElement = require("../elements/baseElement");
+let DropdownElement = require("../elements/dropdown");
 
 class CartPage extends BasePage {
     async waitForPageAvailable() {
@@ -13,34 +14,24 @@ class CartPage extends BasePage {
     // Delivery type dropdown elements
 
     getDeliveryTypeDropdown() {
-        return new BaseElement(element(by.css("div.viewbox:nth-child(2) .field.m_b-sm")), "Delivery dropdown");
+        return new DropdownElement(element(by.css("div.viewbox:nth-child(2) .field.m_b-sm")), "Delivery dropdown");
     }
 
-    getDeliveryTypeOption() {
-        return new BaseElement(element(by.css("option[data-delivery-id='13261']")), "Delivery type #1");
-    }
-
-    async setDeliveryType() {
+    async setDeliveryType(optionText) {
         await allure.createStep("Select delivery type", async () => {
-            await this.getDeliveryTypeDropdown().click();
-            await this.getDeliveryTypeOption().click();
+            await this.getDeliveryTypeDropdown().selectOption(optionText);
         })();
     }
 
     // Department dropdown elements
     getDepartmentDropdown() {
-        return new BaseElement(element(by.css("div[data-delivery-type-options='warehouseNP']")), "Department dropdown");
+        return new DropdownElement(element(by
+            .css("div[data-delivery-type-options='warehouseNP']")), "Department dropdown");
     }
 
-    getDepartmentOption() {
-        return new BaseElement(element(by
-            .css("div[data-delivery-type-options='warehouseNP'] option:nth-child(2)")), "Department option");
-    }
-
-    async setDepartmentOption() {
+    async setDepartmentOption(optionText) {
         await allure.createStep("Set department", async () => {
-            await this.getDepartmentDropdown().click();
-            await this.getDepartmentOption().click();
+            await this.getDepartmentDropdown().selectOption(optionText);
         })();
     }
 

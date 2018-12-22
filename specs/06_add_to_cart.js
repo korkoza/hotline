@@ -15,10 +15,9 @@ describe('Add to cart', () => {
         await LoginPage.setCred('protractor.automation01@gmail.com', 'passw0rd', 'Correct email, correct password');
         await LoginPage.naviagateToLogin();
 
-
         // step 1
         await MainPage.waitForPageAvailable();
-        await MainPage.navigateCategory();
+        await MainPage.navigateNasosCategory();
         expect(await CategoryPage.getCategoryNameElement().getText()).toEqual("Насос для фонтанов и прудов");
 
         // step 2
@@ -26,20 +25,21 @@ describe('Add to cart', () => {
         expect(await CategoryPage.getBuyOnHotlineChkBox().isChecked()).toBeTruthy();
 
         // step 3
-        await CategoryPage.clickCartIcon();
+        await CategoryPage.clickCartIcon(1);
         expect(await ItemPage.getItemName().getText()).toContain('Насос');
 
         // step 4
+        await ItemPage.waitForPageAvailable();
         await ItemPage.clickBuyNowButton();
         await CartPage.waitForPageAvailable();
         expect(await browser.getTitle()).toEqual("Корзина");
 
         // step 5
         await CartPage.waitForPageAvailable();
-        await CartPage.setDeliveryType();
+        await CartPage.setDeliveryType("До склада Новой почты ");
 
         // step 6
-        await CartPage.setDepartmentOption();
+        await CartPage.setDepartmentOption("№1: ул. Пироговский путь, 135");
 
         // step 7
         await CartPage.clickOrderButton();
