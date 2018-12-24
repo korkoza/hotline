@@ -24,7 +24,7 @@ class BaseElement {
         await browser.wait(EC.visibilityOf(this.getProtractorElement()), browser.params.explicitWait);
     }
 
-    async elementToBeSelected() {
+    async waitForElementToBeSelected() {
         await browser.wait(EC.elementToBeSelected(this.getProtractorElement()), browser.params.explicitWait);
     }
 
