@@ -10,7 +10,8 @@ class MainPage extends BasePage {
     }
 
     getPageBaseElement() {
-        return new BaseElement(element(by.css(".text-center")), "Main banner");
+        return new BaseElement(element(by
+            .css(".thumbnails > .owl-stage-outer")), "Main banner");
     }
 
     getSignInElement() {
@@ -49,7 +50,29 @@ class MainPage extends BasePage {
             await this.getDoSearchElement().click();
         })();
     }
-}
 
+    getDachaSadTreeElement() {
+        return new BaseElement(element(by.css('a[href="/dacha_sad/"]')), 'Tree element');
+    }
+
+    getBaseinSubTreeElement() {
+        return new BaseElement(element(by
+            .css('li[data-menu-id="2952"]')), 'Subtree element');
+    }
+
+    getNasosCategoryElement() {
+        return new BaseElement(element(by
+            .css('a[href*="/dacha_sad/nasosy-vodosnabzheniya/46036/"]')), 'Category element');
+    }
+
+    async navigateNasosCategory() {
+        await allure.createStep("Navigate to category", async () => {
+            await this.getDachaSadTreeElement().hover();
+            await this.getBaseinSubTreeElement().waitForVisible();
+            await this.getBaseinSubTreeElement().click();
+            await this.getNasosCategoryElement().click();
+        })();
+    }
+}
 
 module.exports = new MainPage();

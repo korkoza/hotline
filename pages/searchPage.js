@@ -8,7 +8,7 @@ class SearchPage extends BasePage {
     }
 
     getPageBaseElement() {
-        return new BaseElement(element(by.css(".products-list.cell-list")), "Result");
+        return new BaseElement(element(by.css(".products-list.cell-list > li:nth-child(1)")), "Result");
     }
 
     getSearchResult() {
