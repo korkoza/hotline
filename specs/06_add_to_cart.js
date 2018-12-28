@@ -5,7 +5,7 @@ let CategoryPage = require('../pages/categoryPage');
 let CartPage = require('../pages/cartPage');
 let LoginPage = require('..//pages/loginPage');
 
-describe('Add to cart', () => {
+describe('Cart', () => {
     beforeAll(async () => {
         await MainPage.open();
     });
@@ -17,7 +17,7 @@ describe('Add to cart', () => {
 
         // step 1
         await MainPage.waitForPageAvailable();
-        await MainPage.navigateNasosCategory();
+        await MainPage.navigateCategory('Дача, Сад', 'Бассейны, пруды, фонтаны', 'Насосы для фонтанов и прудов');
         expect(await CategoryPage.getCategoryNameElement().getText()).toEqual("Насос для фонтанов и прудов");
 
         // step 2
