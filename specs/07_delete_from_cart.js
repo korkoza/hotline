@@ -1,7 +1,5 @@
 /* eslint-disable max-len */
 let MainPage = require('../pages/mainPage');
-let ItemPage = require('../pages/itemPage');
-let CategoryPage = require('../pages/categoryPage');
 let CartPage = require('../pages/cartPage');
 
 describe('Cart', () => {
@@ -11,14 +9,7 @@ describe('Cart', () => {
 
     it('Delete from cart', async () => {
         // add items to cart
-        for (let i = 1; i <= 3; i++) {
-            await browser.get('https://hotline.ua/dacha_sad/nasosy-vodosnabzheniya/46036/?checkout=1');
-            await CategoryPage.waitForPageAvailable();
-            await CategoryPage.clickCartIcon(i);
-            await ItemPage.waitForPageAvailable();
-            await ItemPage.clickBuyNowButton();
-            await CartPage.waitForPageAvailable();
-        }
+        await MainPage.addRandomItemsToCart(3);
 
         await MainPage.open();
 

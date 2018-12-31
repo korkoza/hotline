@@ -58,7 +58,7 @@ class CartPage extends BasePage {
 
     getDeleteFirstItemElement() {
         return new BaseElement(element(by
-            .css("div.viewbox:nth-child(2) > div:nth-child(3) i")), "Delete first item icon");
+            .css("div.row-indent:nth-child(3) i")), "Delete first item icon");
     }
 
     async deleteFirstCartItem() {

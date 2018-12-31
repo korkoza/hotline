@@ -3,6 +3,9 @@ let ButtonElement = require("../elements/button");
 let BaseElement = require("../elements/baseElement");
 let InputElement = require("../elements/input");
 let TextViewElement = require("../elements/text_view");
+let ItemPage = require('../pages/itemPage');
+let CategoryPage = require('../pages/categoryPage');
+let CartPage = require('../pages/cartPage');
 
 class MainPage extends BasePage {
     async waitForPageAvailable() {
@@ -59,6 +62,17 @@ class MainPage extends BasePage {
             await this.getSubTreeElement(subTreeName).click();
             await this.getCategoryElement(categoryName).click();
         })();
+    }
+
+    async addRandomItemsToCart(itemCount) {
+        for (let i = 1; i <= itemCount; i++) {
+            await browser.get('https://hotline.ua/dacha_sad/nasosy-vodosnabzheniya/46036/?checkout=1');
+            await CategoryPage.waitForPageAvailable();
+            await CategoryPage.clickCartIcon(i);
+            await ItemPage.waitForPageAvailable();
+            await ItemPage.clickBuyNowButton();
+            await CartPage.waitForPageAvailable();
+        }
     }
 }
 
