@@ -11,8 +11,8 @@ describe('Work with file system', () => {
     it('Attach file', async () => {
         // step 1
         await MainPage.navigateToFeedbackPage();
-        let newWindow = await browser.getAllWindowHandles();
-        await browser.switchTo().window(newWindow[1]);
+        let allWindows = await browser.getAllWindowHandles();
+        await browser.switchTo().window(allWindows[1]);
         expect(await FeedbackPage.getCaptionElement().getText()).toEqual("Обратная связь для пользователей");
 
         // step 2
@@ -20,7 +20,6 @@ describe('Work with file system', () => {
         expect(await FeedbackPage.getChooseFileButton(2)).toBeTruthy();
 
         await FeedbackPage.attachFile(2, 'C:/projects/hotline/test_data/logo-v2.svg');
-        // await browser.sleep(20000);
         expect(await FeedbackPage.getFileTypeErrorElement(2).getAttribute('style')).toEqual('display: block;');
     });
 });
