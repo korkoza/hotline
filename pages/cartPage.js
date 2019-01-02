@@ -45,6 +45,36 @@ class CartPage extends BasePage {
             await this.getOrderButton().click();
         })();
     }
+
+    // cart items
+
+    getCartContentElement() {
+        return new BaseElement(element(by.css("div[data-cart-content]")), "Cart content element");
+    }
+
+    getCartContentElementBusy() {
+        return new BaseElement(element(by.css("div[data-cart-content].busy")), "Cart content element being updated");
+    }
+
+    getDeleteFirstItemElement() {
+        return new BaseElement(element(by
+            .css("div.row-indent:nth-child(3) i")), "Delete first item icon");
+    }
+
+    async deleteFirstCartItem() {
+        await allure.createStep("Delete first item from Cart page", async () => {
+            await this.getDeleteFirstItemElement().click();
+        })();
+    }
+
+    getItemsCount() {
+        return new BaseElement(element.all(by
+            .css('div[data-order-item]')).count(), "Count of added items on Cart Page");
+    }
+
+    async itemsCount() {
+        return await this.getItemsCount().protractorElement;
+    }
 }
 
 module.exports = new CartPage();

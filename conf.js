@@ -25,7 +25,7 @@ exports.config = {
         implicitWait: 5000
     },
     jasmineNodeOpts: {
-        defaultTimeoutInterval: 60000,
+        defaultTimeoutInterval: 90000,
         stopSpecOnExpectationFailure: true
         },
     onPrepare: async function() {

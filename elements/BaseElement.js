@@ -24,6 +24,10 @@ class BaseElement {
         await browser.wait(EC.visibilityOf(this.getProtractorElement()), browser.params.explicitWait);
     }
 
+    async waitForInvisible() {
+        await browser.wait(EC.invisibilityOf(this.getProtractorElement()), browser.params.explicitWait);
+    }
+
     async waitForElementToBeSelected() {
         await browser.wait(EC.elementToBeSelected(this.getProtractorElement()), browser.params.explicitWait);
     }
@@ -31,6 +35,11 @@ class BaseElement {
     async hover() {
         console.log(`Hover on "${this.name}"`);
         await browser.actions().mouseMove(this.getProtractorElement()).perform();
+    }
+
+    async count() {
+        console.log(`Count "${this.name}" elements`);
+        await this.protractorElement.count();
     }
 }
 
