@@ -36,7 +36,7 @@ class MainPage extends BasePage {
     async getUserName() {
         return await this.getUserNameElement().getText();
     }
-
+    
     async navigateToSignIn() {
         await allure.createStep('Click Sign in', async () => {
             await this.getSignInElement().click();
@@ -53,7 +53,6 @@ class MainPage extends BasePage {
             await this.getDoSearchElement().click();
         })();
     }
-
 
     async navigateCategory(treeName, subTreeName, categoryName) {
         await allure.createStep("Navigate to category", async () => {
