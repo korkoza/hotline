@@ -29,7 +29,7 @@ class FeedbackPage extends BasePage {
 
     getFileTypeErrorElement(number) {
         return new TextViewElement(element(by
-            .css(`.cell-7  div:nth-child(${number})  div:nth-child(4)  div`)), "'not supported format' error for file");
+            .css(`.cell-7  div:nth-child(${number})  div:nth-child(4)  div`)), "'not supported format' error ");
     }
 }
 

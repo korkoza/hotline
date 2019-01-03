@@ -77,7 +77,7 @@ class MainPage extends BasePage {
 
     // feedback link
     getFeedbackLinkElement() {
-        return new BaseElement(element(by.css("a[href='/feedback/']")), "Feedback for client link");
+        return new ButtonElement(element(by.css("a[href='/feedback/']")), "Feedback for client link");
     }
 
     async navigateToFeedbackPage() {

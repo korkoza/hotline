@@ -20,6 +20,6 @@ describe('Work with file system', () => {
         expect(await FeedbackPage.getChooseFileButton(2)).toBeTruthy();
 
         await FeedbackPage.attachFile(2, 'C:/projects/hotline/test_data/logo-v2.svg');
-        expect(await FeedbackPage.getFileTypeErrorElement(2).getAttribute('style')).toEqual('display: block;');
+        expect(await FeedbackPage.getFileTypeErrorElement(2).isDisplayed()).toBe(true);
     });
 });
