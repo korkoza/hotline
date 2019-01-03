@@ -36,11 +36,6 @@ class MainPage extends BasePage {
     async getUserName() {
         return await this.getUserNameElement().getText();
     }
-
-    // feedback link
-    getFeedbackLinkElement() {
-        return new BaseElement(element(by.css("a[href='/feed/']")), "Feedback for client link");
-    }
     
     async navigateToSignIn() {
         await allure.createStep('Click Sign in', async () => {
@@ -58,7 +53,6 @@ class MainPage extends BasePage {
             await this.getDoSearchElement().click();
         })();
     }
-
 
     async navigateCategory(treeName, subTreeName, categoryName) {
         await allure.createStep("Navigate to category", async () => {
@@ -78,6 +72,11 @@ class MainPage extends BasePage {
             await ItemPage.clickBuyNowButton();
             await CartPage.waitForPageAvailable();
         }
+    }
+        
+    // feedback link
+    getFeedbackLinkElement() {
+        return new BaseElement(element(by.css("a[href='/feed/']")), "Feedback for client link");
     }
 }
 
