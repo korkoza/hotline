@@ -37,6 +37,11 @@ class MainPage extends BasePage {
         return await this.getUserNameElement().getText();
     }
 
+    // feedback link
+    getFeedbackLinkElement() {
+        return new BaseElement(element(by.css("a[href='/feed/']")), "Feedback for client link");
+    }
+    
     async navigateToSignIn() {
         await allure.createStep('Click Sign in', async () => {
             await this.getSignInElement().click();
