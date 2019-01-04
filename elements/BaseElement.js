@@ -41,6 +41,11 @@ class BaseElement {
         console.log(`Count "${this.name}" elements`);
         await this.protractorElement.count();
     }
+
+    async isDisplayed() {
+        console.log(`Verify whether "${this.name} is displayed"`);
+        return await this.protractorElement.isDisplayed();
+    }
 }
 
 module.exports = BaseElement;

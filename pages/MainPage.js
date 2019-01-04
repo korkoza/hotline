@@ -73,10 +73,17 @@ class MainPage extends BasePage {
             await CartPage.waitForPageAvailable();
         }
     }
-        
+
     // feedback link
     getFeedbackLinkElement() {
-        return new BaseElement(element(by.css("a[href='/feed/']")), "Feedback for client link");
+        return new ButtonElement(element(by.css("a[href='/feedback/']")), "Feedback for client link");
+    }
+
+    async navigateToFeedbackPage() {
+        await allure.createStep("Navigate to Feedback page", async () => {
+            await this.getFeedbackLinkElement().hover();
+            await this.getFeedbackLinkElement().click();
+        })();
     }
 }
 
