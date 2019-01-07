@@ -51,6 +51,11 @@ class BaseElement {
         console.log(`Verify whether "${this.name}" is enabled`);
         return await this.protractorElement.isEnabled();
     }
+
+    async isPresent() {
+        console.log(`Verify whether "${this.name}" is present`);
+        return await this.protractorElement.isPresent();
+    }
 }
 
 module.exports = BaseElement;

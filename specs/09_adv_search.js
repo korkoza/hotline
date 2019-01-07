@@ -17,5 +17,6 @@ describe('Search', () => {
         await CategoryPage.setPriceLimits(1200, 2000);
         await CategoryPage.getListOfItemsElementBusy().waitForInvisible();
         expect(await CategoryPage.getItem("Petzl Rocpec P26").isDisplayed()).toBe(true);
+        expect(await CategoryPage.getItem("Petzl Perfo SPE P08").isPresent()).toBe(false);
     });
 });

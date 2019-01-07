@@ -47,7 +47,7 @@ class CategoryPage extends BasePage {
     }
 
     getFilterByName(name) {
-        return new BaseElement(element(by.css(`.hidden input[data-eventlabel*='${name}']`)), `"${name}" filter Checkbox`);
+        return new BaseElement(element(by.css(`ul:nth-child(1) input[data-eventlabel*='${name}']`)), `"${name}" filter Checkbox`);
     }
 
     getListOfItemsElementBusy() {
