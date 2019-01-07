@@ -43,8 +43,13 @@ class BaseElement {
     }
 
     async isDisplayed() {
-        console.log(`Verify whether "${this.name} is displayed"`);
+        console.log(`Verify whether "${this.name}" is displayed`);
         return await this.protractorElement.isDisplayed();
+    }
+
+    async isEnabled() {
+        console.log(`Verify whether "${this.name}" is enabled`);
+        return await this.protractorElement.isEnabled();
     }
 }
 
